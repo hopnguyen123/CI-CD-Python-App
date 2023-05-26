@@ -113,3 +113,9 @@ data transmission from `variables.tf` to 3 module
 ### main.tf
 - Create `DynamoDB table`
 
+# python-app
+- Contain `python-app` and `jenkinsfile`
+## app folder
+- Contain `python app`
+## JENKINS folder`
+- Contain all `jenkinsfile`
