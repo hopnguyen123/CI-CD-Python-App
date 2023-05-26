@@ -80,4 +80,4 @@ data transmission from `variables.tf` to 3 module
 - Attachment `role` with `policy`
 - Create `Lambda function` with `policy`
 - Create `Lambda function 2` with `policy`
-- Create `Cloudwatch` to trigger `Lambda function 2`
+- Create `Cloudwatch` to trigger `Lambda function 2` every 15 minutes
