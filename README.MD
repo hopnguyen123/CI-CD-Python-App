@@ -69,3 +69,15 @@ data transmission from `variables.tf` to 3 module
   - `Route_table` 
     - `pubic`
     - `private`
+## Lambda module
+### variables.tf
+- `dynamodb_name` : from `root/main.tf` -> `root/variables.tf`
+- `table_name` : from `root/main.tf` -> `root/variables.tf`
+###  main.tf
+- Create `IAM role`
+- Create `IAM Policy` to CRUD item in DynamoDB
+  
+- Attachment `role` with `policy`
+- Create `Lambda function` with `policy`
+- Create `Lambda function 2` with `policy`
+- Create `Cloudwatch` to trigger `Lambda function 2`
