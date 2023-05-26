@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+
+    parameters {
+        string(name: 'REGISTRY', defaultValue: 'nnhop/mypythonapp', description: 'Enter the Docker registry')
+        string(name: 'REGISTRY_CREDENTIAL', defaultValue: 'dockerhub_id', description: 'Select the Docker registry credential')
+    }
+
+    stages{
+        stage('test') {
+            steps {
+                // Pull the Image from Docker_hub
+                echo 'pull image'
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', "${params.REGISTRY_CREDENTIAL}") {
+                        def image = docker.image("${params.REGISTRY}")
+                        image.pull()
+                    }
+                }
+                
+                // Run the Image to test file usr/src/app/app.py
+                sh "docker run -d --name mycontainer --rm ${params.REGISTRY} python usr/src/app/app.py"
+                
+                // Delete container and Image after Test
+                sh 'docker stop mycontainer'
+                sh "docker rmi ${params.REGISTRY}"
+
+                echo 'done'
+            }
+        }
+    }
+}
+
+

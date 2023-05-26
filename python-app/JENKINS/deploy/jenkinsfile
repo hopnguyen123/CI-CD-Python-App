@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    // environment{
+    //     registry = ''
+    // }
+
+    parameters {
+        string(name: 'REGISTRY', defaultValue: 'nnhop/mypythonapp', description: 'Enter the Docker registry')
+        string(name: 'REGISTRY_CREDENTIAL', defaultValue: 'dockerhub_id', description: 'Select the Docker registry credential')
+    }
+    stages {
+        stage('Docker Run') {
+            steps {
+                script {
+                    echo "${params.REGISTRY}"
+                    
+                    // Pull the Docker image
+                    sh "docker pull ${params.REGISTRY}"
+                    
+                    // Run the Docker container
+                    sh "docker run -d -p 8096:5000 --rm --name mypythonappContainer ${params.REGISTRY}"
+                }
+            }
+        }
+    }
+}

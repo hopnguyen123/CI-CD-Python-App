@@ -1,0 +1,76 @@
+@Library('jenkins-library') _
+
+pipeline {
+    agent any
+    // environment {
+    //     REGISTRY = 'nnhop/mypythonapp'
+    //     REGISTRY_CREDENTIAL = 'dockerhub_id'
+    // }
+
+
+    parameters {
+        string(name: 'REGISTRY', defaultValue: 'nnhop/mypythonapp', description: 'Enter the Docker registry')
+        string(name: 'REGISTRY_CREDENTIAL', defaultValue: 'dockerhub_id', description: 'Select the Docker registry credential')
+    }
+
+    // Call pipeline_build to pull code, create Image, push Docker_hub
+    stages {
+        stage('Invoke Build') {
+            steps {
+                script {
+                    def childPipelineParams = [
+                        // string(name: 'REGISTRY', value: env.REGISTRY),
+                        // string(name: 'REGISTRY_CREDENTIAL', value: env.REGISTRY_CREDENTIAL)
+                        
+                        string(name: 'REGISTRY', value: params.REGISTRY),
+                        string(name: 'REGISTRY_CREDENTIAL', value: params.REGISTRY_CREDENTIAL)
+                    ]
+                    build job: 'pipeline_build', parameters: childPipelineParams
+                }
+                
+            }
+        }
+        
+        // Call pipeline_test
+        stage('Invoke Test'){
+            steps{
+                script{
+                    def childPipelineParams_2 = [
+                        // string(name: 'REGISTRY', value: env.REGISTRY),
+                        // string(name: 'REGISTRY_CREDENTIAL', value: env.REGISTRY_CREDENTIAL)
+
+                        string(name: 'REGISTRY', value: params.REGISTRY),
+                        string(name: 'REGISTRY_CREDENTIAL', value: params.REGISTRY_CREDENTIAL)
+                    ]
+                    build job:'pipeline_test', parameters: childPipelineParams_2                     
+                }
+            }
+        }
+        
+        // Call pipeline_deploy
+        stage('Invoke Deploy'){
+            steps{
+                script{
+                    def childPipelineParams_3 = [
+                        // string(name: 'REGISTRY', value: env.REGISTRY),
+
+                        
+                        string(name: 'REGISTRY', value: params.REGISTRY),
+                        string(name: 'REGISTRY_CREDENTIAL', value: params.REGISTRY_CREDENTIAL)
+                    ]
+                    build job:'pipeline_deploy', parameters: childPipelineParams_3                      
+                }
+            }
+        }
+
+        // Send Data of
+        stage('Send Data to DynamoDB'){
+            steps{
+                echo "Build ID: ${env.BUILD_ID}"
+                echo "Date: ${currentBuild.getTimeInMillis()}"
+                hello("${env.BUILD_ID}",'22','111','111',"${currentBuild.getTimeInMillis()}")
+            }
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment{
+        dockerImage=''
+    }
+
+    parameters {
+        string(name: 'REGISTRY', defaultValue: 'nnhop/mypythonapp', description: 'Enter the Docker registry')
+        string(name: 'REGISTRY_CREDENTIAL', defaultValue: 'dockerhub_id', description: 'Select the Docker registry credential')
+    }
+
+    stages {
+        // Checkout code from Bitbucket
+        stage('checkout') {
+            steps {
+                echo "REGISTRY: ${params.REGISTRY}"
+                echo "REGISTRY_CREDENTIAL: ${params.REGISTRY_CREDENTIAL}"
+                
+                checkout scmGit(branches: [[name: '*/nnhop']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab_id', url: 'https://gitsdc.tma.com.vn/devops-center-intern/jenkins-deployment-manager/python-app']])
+                // checkout scmGit(branches: [[name: '*/nnhop']], extensions: [], userRemoteConfigs: [[url: 'https://gitsdc.tma.com.vn/devops-center-intern/jenkins-deployment-manager/python-app/-/tree/nnhop/']])
+            }
+        }
+
+        // Build Image
+        stage('Building image') {
+            steps {
+                script {
+                    dockerImage = docker.build("${params.REGISTRY}")
+                    echo('build duoc image')
+                }
+            }
+        }
+        
+        // Upload Image to Docker_hub
+        stage('Upload Image') {
+            steps{    
+                script {
+                    docker.withRegistry('',"${params.REGISTRY_CREDENTIAL}") {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+    }
+}
