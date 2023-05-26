@@ -1,4 +1,4 @@
-# 1 Install Jenkins on Ubuntu 22.04
+# 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
 - Install Java on ubuntu
 - Install Jenkins on Ubuntu
@@ -30,7 +30,7 @@
   - `AWS`
   - `Git`
   
-# 2. Terraform folder
+# 2/ Terraform folder
 - Create `AWS 3 tier` architecture
 - Create `DynamoDB` database
 - Create `Lambda` function
@@ -113,7 +113,7 @@ data transmission from `variables.tf` to 3 module
 ### 2.5.2 main.tf
 - Create `DynamoDB table`
 
-# 3 python-app
+# 3/ python-app
 - Contain `python-app` and `jenkinsfile`
 ## 3.1 app folder
 - Contain `python app`
