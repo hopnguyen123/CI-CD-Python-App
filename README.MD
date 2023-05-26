@@ -132,3 +132,15 @@ data transmission from `variables.tf` to 3 module
 - `jenkinsfile` 
   - invoke `build`, `test`, `deploy` stage 
   - Send data after deploy to DynamoDB using `jenkins shared library`
+
+# 4/ jenkins-library
+## 4.1 vars
+### 4.1.1 AWSCredentialsModule.groovy
+- Create Credential provider AWS
+### 4.1.2 DateUtilsModule.groovy
+- Transfer String to format Day expire
+### 4.1.3 DynamoDBModule.groovy
+- Put item to DynamoDB table AWS
+
+### 4.1.4 hello.groovy
+- main file groovy
