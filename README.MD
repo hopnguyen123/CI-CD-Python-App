@@ -1,3 +1,19 @@
+# 0/ REQUIREMENTS
+- `Terraform`:
+  - Create `AWS 3 tier` architecture
+    - VPC
+    - SUBNET public
+    - Subnet private
+  - Create `DynamoDB` table
+  - Create `Lambda`
+    - `Lambda function` scan `DynamoDB` every 15p 
+    - current_time > expires_at => set STATUS = DESTROYED
+- `Jenkins`:
+  - Create 3 pipeline `build`, `test`, `deploy`
+  - Create 1 pipeline `main` to invoke 3 pipeline above
+  - `Send data` after deploy to `DynamoDB table` using `Jenkins shared library`
+    - deployment_id = build_id
+    - expires_at = current_time + 3 days - 7 hours
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
 - Install Java on ubuntu
