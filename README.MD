@@ -119,6 +119,7 @@ data transmission from `variables.tf` to 3 module
 - Contain `python app`
 ## 3.2 JENKINS folder
 - Contain all `jenkinsfile`
+- Using `parameters` we can change `params` when run pipeline jenkins
 ### 3.2.1 build stage
 - `jenkinsfile` to checkout code, build images, push image to DockerHub
 ### 3.2.2 test stage

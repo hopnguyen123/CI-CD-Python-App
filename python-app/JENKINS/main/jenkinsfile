@@ -2,11 +2,6 @@
 
 pipeline {
     agent any
-    // environment {
-    //     REGISTRY = 'nnhop/mypythonapp'
-    //     REGISTRY_CREDENTIAL = 'dockerhub_id'
-    // }
-
 
     parameters {
         string(name: 'REGISTRY', defaultValue: 'nnhop/mypythonapp', description: 'Enter the Docker registry')
