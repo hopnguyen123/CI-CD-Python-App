@@ -34,6 +34,25 @@
 - Create `AWS 3 tier` architecture
 - Create `DynamoDB` database
 - Create `Lambda` function
+## RUN 
+- B1: Create S3
+`aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
+
+- B2: Init
+`terraform init  -backend-config="region=ap-southeast-1"`
+
+- B3: Apply
+`terraform apply -lock=false`
+
+- B4: Run Lambda function
+`aws lambda invoke --function-name example-function lambda/output.json`
+`aws lambda invoke --function-name example-function-2 lambda/output.json`
+
+- Final: Destroy on Localhost
+- `comment backend`
+- `terraform init -migrate-state `
+    - `yes`
+- `terraform destroy -auto-approve`
 ## root
 ### variables.tf
 - `AWS_region` : ap-southeast-1
