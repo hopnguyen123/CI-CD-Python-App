@@ -107,7 +107,7 @@ data transmission from `variables.tf` to 3 module
 ### 2.4.4 lambda_function_2.py
 - Comparison `current_time` with `expires_at` to set `status` of item in DynamoDB table
 
-## 2.4 database module
+## 2.5 database module
 ### 2.5.1 variables.tf
  - `table_name` : from `root/main.tf` -> `root/variables.tf`
 ### 2.5.2 main.tf
@@ -119,3 +119,15 @@ data transmission from `variables.tf` to 3 module
 - Contain `python app`
 ## 3.2 JENKINS folder
 - Contain all `jenkinsfile`
+### 3.2.1 build stage
+- `jenkinsfile` to checkout code, build images, push image to DockerHub
+### 3.2.2 test stage
+- `jenkinsfile` to pull image from DockerHub and test image
+
+### 3.2.3 deploy stage
+- `jenkinsfile` to push image from DockerHub and Deploy container on localhost:8096
+
+### 3.2.4 test
+- `jenkinsfile` 
+  - invoke `build`, `test`, `deploy` stage 
+  - Send data after deploy to DynamoDB using `jenkins shared library`
