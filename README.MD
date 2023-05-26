@@ -7,15 +7,15 @@
   - 8080
   - 8096
   - Open SSH
+- `Thêm user jenkins vào group docker` [tại đây](https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-pipelines-in-jenkins-on-ubuntu-22-04)
 
 ## On Jenkins Dashboard
 ### Install Docker plugin
   - `Doker`
   - `Docker API`
-  - `Docker Commons Plugin`
+  - `Docker Commons`
   - `Docker Pipeline`
   - `docker-build-step`
-  - `Thêm user jenkins vào group docker` [tại đây](https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-pipelines-in-jenkins-on-ubuntu-22-04)
 
 ### Install AWS plugin
   - `AWS CodePipeline Plugin`
