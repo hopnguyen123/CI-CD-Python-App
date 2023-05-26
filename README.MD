@@ -45,8 +45,8 @@
 `terraform apply -lock=false`
 
 - B4: Run Lambda function
-`aws lambda invoke --function-name example-function lambda/output.json`
-`aws lambda invoke --function-name example-function-2 lambda/output.json`
+  - `aws lambda invoke --function-name example-function lambda/output.json`
+  - `aws lambda invoke --function-name example-function-2 lambda/output.json`
 
 - Final: Destroy on Localhost
 - `comment backend`
