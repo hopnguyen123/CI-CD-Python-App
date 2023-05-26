@@ -35,7 +35,7 @@
 - Create `DynamoDB` database
 - Create `Lambda` function
 ## RUN 
-- B1: Create S3
+- B1: Create `S3 State`
   - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
 
 - B2: Init
