@@ -82,8 +82,15 @@ data transmission from `variables.tf` to 3 module
 - Create `Lambda function 2` with `policy`
 - Create `Cloudwatch` to trigger `Lambda function 2` every 15 minutes
 
-## lambda_function.py
+### lambda_function.py
 - Put item to DynamoDB table
 
-## lambda_function_2.py
+### lambda_function_2.py
 - Comparison `current_time` with `expires_at` to set `status` of item in DynamoDB table
+
+## database module
+### variables.tf
+ - `table_name` : from `root/main.tf` -> `root/variables.tf`
+### main.tf
+- Create `DynamoDB table`
+
