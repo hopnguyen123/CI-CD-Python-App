@@ -41,3 +41,28 @@
 - `table_name` : "example-table"
 - `bucket_name` : nnhop-terraform-state-bucket
 - `"dynamoDB_state_lock_name"`: "nnhop-terraform-state-lock-table"
+### main.tf
+- Call 3 module `vpc`, `database`, `lambda` and 
+data transmission from `variables.tf` to 3 module
+### backend.tf
+- Create backend in terraform: `S3 state` and `DynamoDB state lock`
+  - First: Create `S3 state` in AWS from CMD
+  - Terraform backend region is declared when run `terraform init`
+  
+## vpc module
+### variables.tf
+- `vpc_cidr_block` : 10.0.0.0/16
+- `private_subnet` : from `private_subnet_list` in `root/variables.tf`
+- `public_subnet` : from `public_subnet_list` in `root/variables.tf`
+- `availability_zone` : from `AZ_list` in `root/variables.tf`
+  
+### main.tf
+- Create
+  - `VPC`
+  - `Private_subnet`
+  - `Public_subnet`
+  - `Internet_gateway`
+  - `NAT`
+  - `Route_table` 
+    - `pubic`
+    - `private`
