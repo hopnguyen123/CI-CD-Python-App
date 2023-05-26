@@ -31,6 +31,9 @@
   - `Git`
   
 # Terraform folder
+- Create `AWS 3 tier` architecture
+- Create `DynamoDB` database
+- Create `Lambda` function
 ## root
 ### variables.tf
 - `AWS_region` : ap-southeast-1
