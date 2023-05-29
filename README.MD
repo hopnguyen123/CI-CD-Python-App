@@ -8,6 +8,7 @@
   - Create `Lambda`
     - `Lambda function` scan `DynamoDB` every 15p 
     - current_time > expires_at => set STATUS = DESTROYED
+  - Create `S3 state` and `DynamoDB state lock`
 - `Jenkins`:
   - Create 3 pipeline `build`, `test`, `deploy`
   - Create 1 pipeline `main` to invoke 3 pipeline above
@@ -40,9 +41,9 @@
 
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
-- Install Java on ubuntu
-- Install Jenkins on Ubuntu
-- Install Docker on Ubuntu
+- Install Java on ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
+- Install Jenkins on Ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04)
+- Install Docker on Ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
 - Allow port
   - 8080
   - 8096
@@ -74,6 +75,7 @@
 - Create `AWS 3 tier` architecture
 - Create `DynamoDB` database
 - Create `Lambda` function
+- Create `S3 state` and `DynamoDB state lock`
 ## 2.1 RUN 
 - B1: Create `S3 State`
   - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
