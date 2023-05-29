@@ -17,9 +17,9 @@
     - expires_at = current_time + 3 days - 7 hours
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
-- Install Java on ubuntu
-- Install Jenkins on Ubuntu
-- Install Docker on Ubuntu
+- Install Java on ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
+- Install Jenkins on Ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-22-04)
+- Install Docker on Ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
 - Allow port
   - 8080
   - 8096
