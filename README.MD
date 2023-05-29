@@ -51,6 +51,7 @@
 - Create `AWS 3 tier` architecture
 - Create `DynamoDB` database
 - Create `Lambda` function
+- Create `S3 state` and `DynamoDB state lock`
 ## 2.1 RUN 
 - B1: Create `S3 State`
   - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
