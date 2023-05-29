@@ -1,4 +1,6 @@
 # 0/ REQUIREMENTS
+- **`NOTE`**
+  - **Khi thực hiện thì phải tách repo này thành 3 repo `terraform`, `python-app`, `jenkins-library` sau đó chỉnh sửa các đường dẫn, link lại thì các jenkinsfile mới chạy được**
 - `Terraform`:
   - Create `AWS 3 tier` architecture
     - VPC
