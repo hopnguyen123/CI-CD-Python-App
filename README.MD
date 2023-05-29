@@ -21,14 +21,14 @@
   - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
   - bucket name: `nnhop-terraform-state-bucket`
   - region name: `ap-southeast-1`
-![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/1-s3-state.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/1-s3-state.png)
 
 - B2: Init
   - `terraform init  -backend-config="region=ap-southeast-1"`
   - Init with backend-config region: `ap-southeast-1`
-![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/2-terraform-init.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/2-terraform-init.png)
  - File terraform.tfstate is saved in S3 state
-![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/3-s3-state-bucket.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/3-s3-state-bucket.png)
 
 - B3: Apply
   - `terraform apply -lock=false`
@@ -60,6 +60,10 @@
 - Create pipeline build, test, deploy
 - Create pipeline main to invoke 3 pipeline above
 - Create `Jenkins shared library` to send data after deploy to DynamoDB table
+### Create Credentials
+- `Github_id`
+- `Dockerhub_id`
+- `AWS`
 ### Pipeline Build
 - Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/build/jenkinsfile)
   - Checkout code from source code
