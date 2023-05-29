@@ -21,9 +21,15 @@
   - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
   - bucket name: `nnhop-terraform-state-bucket`
   - region name: `ap-southeast-1`
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/1-s3-state.png)
+
 - B2: Init
   - `terraform init  -backend-config="region=ap-southeast-1"`
   - Init with backend-config region: `ap-southeast-1`
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/2-terraform-init.png)
+ - File terraform.tfstate is saved in S3 state
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/images/terraform/3-s3-state-bucket.png)
+
 - B3: Apply
   - `terraform apply -lock=false`
   - Create 
@@ -37,7 +43,46 @@
   - `aws lambda invoke --function-name example-function-2 lambda/output.json`
     - Create Cloudwatch event to trigger `example-function-2` every 2 minute
 
+- B5: Destroy (If needed)
+  - `Comment Backend block`
+  - `terraform init -migrate-state` to transfer file terraform.tfstate from S3 state to locate 
+  - `terraform destroy -auto-approve`
 
+- Final
+  - After run all cmd of terraform will create
+    - AWS 3 tier 
+    - DynamoDB table
+    - S3 state
+    - DynamoDB Statelocks
+    - Lambda function
+  
+## 0.2/ JENKINS: 
+- Create pipeline build, test, deploy
+- Create pipeline main to invoke 3 pipeline above
+- Create `Jenkins shared library` to send data after deploy to DynamoDB table
+### Pipeline Build
+- Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/build/jenkinsfile)
+  - Checkout code from source code
+  - Build Image
+  - Push image to dockerhub
+- Config at Jenkins Dashboard
+### Pipeline Test
+- Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/test/jenkinsfile)
+  - Pull Image from Dockerhub
+  - Test code
+- Config at Jenkins Dashboard
+### Pipeline Deploy
+- Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/deploy/jenkinsfile)
+  - Deploy at localhost:8096
+- Config at Jenkins Dashboard
+
+### Pipeline Main
+- Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/main/jenkinsfile)
+  - Invoke Build_pipeline
+  - Invoke Test_pipeline
+  - Invoke Deploy_pipeline
+  - Send Data to DynamoDB using `Jenkins shared library`
+- Config at Jenkins Dashboard
 
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
