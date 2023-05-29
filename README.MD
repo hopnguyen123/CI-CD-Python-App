@@ -14,6 +14,30 @@
   - `Send data` after deploy to `DynamoDB table` using `Jenkins shared library`
     - deployment_id = build_id
     - expires_at = current_time + 3 days - 7 hours
+# 0/ PERFORM
+## 0.1/ Terraform: Create AWS 3 tier | DynamoDB table | S3 state | DynamoDB Statelocks
+- B1: Create `S3 State`
+  - `aws s3api create-bucket --bucket nnhop-terraform-state-bucket --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1`
+  - bucket name: `nnhop-terraform-state-bucket`
+  - region name: `ap-southeast-1`
+- B2: Init
+  - `terraform init  -backend-config="region=ap-southeast-1"`
+  - Init with backend-config region: `ap-southeast-1`
+- B3: Apply
+  - `terraform apply -lock=false`
+  - Create 
+    - AWS 3 tier
+    - DynamoDB table
+    - S3 state
+    - DynamoDB Statelocks
+- B4: Run Lambda function
+  - `aws lambda invoke --function-name example-function lambda/output.json`
+    - Create Item in DynamoDB table database
+  - `aws lambda invoke --function-name example-function-2 lambda/output.json`
+    - Create Cloudwatch event to trigger `example-function-2` every 2 minute
+
+
+
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
 - Install Java on ubuntu
