@@ -8,6 +8,7 @@
   - Create `Lambda`
     - `Lambda function` scan `DynamoDB` every 15p 
     - current_time > expires_at => set STATUS = DESTROYED
+  - Create `S3 state` and `DynamoDB state lock`
 - `Jenkins`:
   - Create 3 pipeline `build`, `test`, `deploy`
   - Create 1 pipeline `main` to invoke 3 pipeline above
