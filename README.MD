@@ -76,6 +76,9 @@
   - Build Image
   - Push image to dockerhub
 - Config at Jenkins Dashboard
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/9-build-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/10-build-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/11-build-pipeline.png)
 ### Pipeline Test
 - Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/test/jenkinsfile)
   - Pull Image from Dockerhub
