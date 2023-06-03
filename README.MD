@@ -84,10 +84,16 @@
   - Pull Image from Dockerhub
   - Test code
 - Config at Jenkins Dashboard
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/12-test-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/13-test-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/14-test-pipeline.png)
 ### Pipeline Deploy
 - Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/deploy/jenkinsfile)
   - Deploy at localhost:8096
 - Config at Jenkins Dashboard
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/15-deploy-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/16-deploy-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/17-deploy-pipeline.png)
 
 ### Pipeline Main
 - Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/main/jenkinsfile)
@@ -96,7 +102,17 @@
   - Invoke Deploy_pipeline
   - Send Data to DynamoDB using `Jenkins shared library`
 - Config at Jenkins Dashboard
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/18-main-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/19-main-pipeline.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/20-main-pipeline.png)
 
+### Final
+- Deploy on localhost:8096
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/22-Done.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/21-Done.png)
+- Send data after deploy to DynamoDB table
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/23-Done.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/24-Done.png)
 # 1/ Install Jenkins on Ubuntu 22.04
 ## 1.1 On Ubuntu 
 - Install Java on ubuntu [link](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
