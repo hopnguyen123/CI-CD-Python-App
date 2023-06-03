@@ -41,9 +41,13 @@
     - DynamoDB Statelocks
 - B4: Run Lambda function
   - `aws lambda invoke --function-name example-function lambda/output.json`
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/5-lambda.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/6-lambda.png)
     - Create Item in DynamoDB table database
   - `aws lambda invoke --function-name example-function-2 lambda/output.json`
     - Create Cloudwatch event to trigger `example-function-2` every 2 minute
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/7-lambda.png)
+![image!](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/images/terraform/8-lambda.png)
 
 - B5: Destroy (If needed)
   - `Comment Backend block`
