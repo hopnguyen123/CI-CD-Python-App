@@ -70,6 +70,9 @@
 - `Github_id`
 - `Dockerhub_id`
 - `AWS`
+### Configure 'jenkins-share-library'
+- `Dashboard` -> `Manage Jenkins` -> `system` -> `Global Pipeline Libraries`
+- [link](https://www.youtube.com/watch?v=Wj-weFEsTb0)
 ### Pipeline Build
 - Code [link](https://github.com/hopnguyen123/CI-CD-Python-App/blob/main/python-app/JENKINS/build/jenkinsfile)
   - Checkout code from source code
