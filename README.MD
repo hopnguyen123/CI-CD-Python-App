@@ -147,6 +147,9 @@
   - `DockerHub`
   - `AWS`
   - `Git`
+### 1.2.4 Configure 'jenkins-share-library'
+- `Dashboard` -> `Manage Jenkins` -> `system` -> `Global Pipeline Libraries`
+- [link](https://www.youtube.com/watch?v=Wj-weFEsTb0)
   
 # 2/ Terraform folder
 - Create `AWS 3 tier` architecture
